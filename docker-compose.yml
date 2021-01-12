@@ -1,0 +1,22 @@
+version: '3.7'
+
+services:
+  java:
+    build: .
+    container_name: java
+    ports:
+      - "8085:8085"
+    restart: always
+  mysql:
+    image: mysql
+    container_name: mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: management
+      MYSQL_USER: root
+      MYSQL_PASSWORD: root
+    volumes:
+      - ./mysql/:/var/lib/mysql/
+    ports:
+      - "3306:3306"
+    restart: always
